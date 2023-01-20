@@ -34,4 +34,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ## Link para o visualizar o site finalizado.
 
-<a href="">Site</a>
+<a href="https://habits-nlw-dun.vercel.app/">Site</a>
