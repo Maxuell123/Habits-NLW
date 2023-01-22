@@ -77,12 +77,12 @@ const dayOfWeek = daysOfWeek[new Date().getDay()]
 
 function add() {
   if (newHabit.dayExists(today)) {
-    document.getElementById("confirm-habit").innerHTML = "Já está registrado ❌"
+    document.getElementById("confirm-habit").innerHTML = "Já está registrado"
     return
   }
 
   document.getElementById("confirm-habit").innerHTML =
-    "Seu dia foi registrado com sucesso ✅"
+    "Seu dia foi registrado com sucesso"
 
   newHabit.addDay(today)
 }
