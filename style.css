@@ -2,84 +2,90 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-family: "Roboto Mono", monospace;
+}
+
+:root {
+  --background: #09090a;
+  --background-color: #8b5cf6;
+  --text-color: #ffffff;
+  --border: #8b5cf6;
+  --set-color: #16a34a;
+  --highlight-color-hover: rgba(255, 255, 255, 0.2);
 }
 
 body {
-  background-color: #09090a;
-  color: white;
-
+  /* display: grid; */
+  /* place-items: center; */
   height: 100vh;
+  background: var(--background);
+  color: var(--text-color);
 }
-
-
 
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 48px;
   position: fixed;
   width: 100%;
 
-  background-color: #09090a;
-  
+  background: rgba(9, 9, 10, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-button {
-  padding: 16px 24px;
-  border-radius: 8px;
-  border: 1px solid #8b5cf6;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  
-
+.add-habit {
   display: flex;
   align-items: center;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
   gap: 12px;
-
-  font-family: 'Inter';
+  font-family: "Inter";
+  font-style: normal;
   font-weight: 600;
   font-size: 16px;
+  cursor: pointer;
   line-height: 125%;
+  transition: 0.25s ease-in-out;
 }
 
-button:hover {
+.add-habit:hover {
   color: #09d361;
   transition: 0.5s;
 }
 
-#form-habits {
+form {
   display: flex;
-
   padding: 182px 48px 48px;
   width: fit-content;
 }
 
 .habits {
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
-
   gap: 24px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
-
 .habit {
-  width: 64px;
-  height: 64px;
-
-  font-size: 32px;
-
   display: flex;
+  width: 40px;
+  height: 64px;
+  font-size: 32px;
   align-items: center;
   justify-content: center;
 }
 
 .days {
   display: flex;
-  gap: 48px;
   margin-left: 32px;
+  gap: 48px;
 }
 
 .day {
@@ -90,38 +96,358 @@ button:hover {
 
 .day div {
   margin-bottom: 8px;
-
-  font-family: 'Roboto Mono';
+  font-family: "Roboto Mono";
+  font-weight: 700;
   font-size: 20px;
   line-height: 125%;
-
-  color: #A1A1AA;
-
-  text-align: center;
+  align-items: center;
+  color: #a1a1aa;
 }
 
-input {
+.container input {
   appearance: none;
   -webkit-appearance: none;
 
   width: 64px;
   height: 64px;
-
-  border: 2px solid #27272A;
+  background: #18181b;
+  border: 2px solid #27272a;
   border-radius: 8px;
-
-  background: #18181B;
 }
 
-input:checked {
-  background: #6d28d9;
-  border: 2px solid #7c3aed;
+.container input:checked {
+  background: var(--background-color);
+  border: 2px solid #a78bfa;
 }
-
-
 
 @media (max-width: 570px) {
-    button div {
-      display: none;
-    }
+  .add-habit {
+    width: 52px;
+    height: 52px;
+    align-items: center;
+    justify-content: center;
+  }
+  .add-habit div {
+    display: none;
+    transition: display 2s;
+  }
+}
+
+dialog {
+  padding: 24px;
+  width: 419px;
+  margin: 182px auto;
+  border: 0;
+
+  background: rgba(24, 24, 27, 0.9);
+  border-radius: 16px;
+  box-shadow: 4px 16px 24px rgba(0, 0, 0, 0.171);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  color: var(--text-color);
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+dialog p {
+  width: 340px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  color: #a1a1aa;
+}
+
+dialog h2 {
+  width: 340px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 125%;
+}
+
+dialog h3 {
+  width: 340px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 125%;
+  margin-bottom: 25px;
+}
+
+dialog #confirm-habit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  color: var(--text-color);
+  width: 340px;
+  height: 52px;
+
+  background: #16a34a;
+  border-radius: 8px;
+  border: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  cursor: pointer;
+}
+
+/* Inicio do Footer  */
+footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* From https://css.glass */
+  background: rgba(9, 9, 10, 0.74);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  padding: 48px;
+  width: 100%;
+  height: 80px;
+  bottom: 0;
+}
+
+footer .music {
+  display: flex;
+  align-items: center;
+  height: 60px;
+
+  gap: 10px;
+  border: 0;
+
+  background: rgba(24, 24, 27, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  color: var(--text-color);
+  border-radius: 12px;
+}
+
+footer .music img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  margin-left: 6px;
+}
+
+footer .music .artista {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  height: 50px;
+  margin-left: 6px;
+}
+
+footer .music .artista h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+}
+footer .music .artista p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  color: #a1a1aa;
+  margin-top: 2px;
+}
+
+footer .music .controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 25px;
+
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+/* footer .music .controles i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 30px;
+  border-radius: 9999px;
+}
+
+footer .music .controles i:hover {
+  background: #a1a1aa0a;
+  transition: all 0.2s ease-in-out;
+} */
+
+footer .music .controles #play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8b5cf6;
+  width: 50px;
+  height: 30px;
+  border-radius: 9999px;
+}
+footer .music .controles #play:hover {
+  background-color: #8a5cf694;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* TELA DE LOGIN */
+#login {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  background: rgba(43, 43, 48, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+}
+
+#login .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+
+  background: rgba(43, 43, 48, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+
+  padding: 48px;
+}
+
+#login .login img {
+  margin-bottom: 50px;
+}
+#login .login h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 125%;
+}
+
+#login .login p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+#login .login .username {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px;
+  background-color: #27272a96;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+#login .login .username:hover {
+  border: 1px solid #2faf67;
+  color: #2faf67;
+  transition: all 0.2s ease-in-out;
+  
+  transition: 0.5s;
+}
+
+#login .login .username i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+#login .login input {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  width: 200px;
+  height: 52px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 125%;
+
+
+  outline: none;
+}
+
+#login .login button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  color: var(--text-color);
+  width: 300px;
+  height: 52px;
+
+  background: var(--background-color);
+  border-radius: 8px;
+  border: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+/* Define as propriedades de animação */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Adiciona a animação à classe .fade */
+.fade {
+  animation-name: fadeOut;
+  animation-duration: 1s;
 }
